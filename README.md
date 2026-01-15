@@ -16,7 +16,7 @@ Discrete Event Simulation (DES) model for packaging line optimization. Analyzes 
 ## 📖 Executive Summary
 This project develops a **Discrete Event Simulation (DES)** model to assist a packaging company in decision-making regarding aging equipment replacement and internal logistics automation. 
 
-[cite_start]Using **AnyLogic**, the model simulates a full production year (2024) with real historical order data, stochastic machine breakdowns, and variable changeover times[cite: 4, 7].
+[cite_start]Using **AnyLogic**, the model simulates a full production year (2024) with real historical order data, stochastic machine breakdowns, and variable changeover times.
 
 **Key Business Questions Answered:**
 1. Can a single high-speed New Machine replace two aging legacy machines?
@@ -28,17 +28,17 @@ This project develops a **Discrete Event Simulation (DES)** model to assist a pa
 The model is built using a hybrid approach (DES + Agent-based) with custom Java logic for complex control rules.
 
 ### 1. Modeling Logic & Agents
-* [cite_start]**Pull-Push Logic:** Orders are prioritized and "pulled" by available machines, then "pushed" to logistics buffers[cite: 40].
+* [cite_start]**Pull-Push Logic:** Orders are prioritized and "pulled" by available machines, then "pushed" to logistics buffers.
 * **Custom Agents:**
-    * [cite_start]`Order Agent`: Tracks state variables like `procMinutes`, `logisticsCostEur`, and `priorityKey`[cite: 46].
-    * [cite_start]`Machine Agent`: Represents resources with distinct attributes for "Old" vs "New" machinery reliability (MTBF/MTTR)[cite: 48].
+    * [cite_start]`Order Agent`: Tracks state variables like `procMinutes`, `logisticsCostEur`, and `priorityKey`.
+    * [cite_start]`Machine Agent`: Represents resources with distinct attributes for "Old" vs "New" machinery reliability (MTBF/MTTR).
 
 ### 2. Stochasticity & Data-Driven Components
 * **Failures:** Modeled using exponential distributions based on historical MTBF/MTTR data.
     * *New Machine:* Higher reliability, faster repair.
-    * [cite_start]*Legacy Machines:* Frequent breakdowns, slower repair[cite: 52].
-* [cite_start]**Changeovers:** Logic-dependent setup times (5-45 mins) based on SKU family sequencing[cite: 20].
-* [cite_start]**Maintenance:** A **Data-Driven Agent Controller** reads `maintenance_calendar_2024.csv` to trigger scheduled downtime events accurately[cite: 82].
+    * [cite_start]*Legacy Machines:* Frequent breakdowns, slower repair.
+* [cite_start]**Changeovers:** Logic-dependent setup times (5-45 mins) based on SKU family sequencing.
+* [cite_start]**Maintenance:** A **Data-Driven Agent Controller** reads `maintenance_calendar_2024.csv` to trigger scheduled downtime events accurately.
 
 ### 3. KPI Calculation (Java)
 Custom functions were written to calculate OEE (Overall Equipment Effectiveness) and system performance in real-time:
